@@ -1,6 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
-DEMO : [BitBook](https://marvel-heros.herokuapp.com/) 
+DEMO : [MarvelCharactersSearch](https://marvel-heros.herokuapp.com/) 
 
 
 Below you will find some information on how to perform common tasks.<br>
