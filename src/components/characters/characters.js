@@ -9,7 +9,7 @@ const Characters = (props) => {
                 return (
                     <SingleCharacter
                         character={character}
-                        key={character.id}
+                        key={character._id}
                         bookmarkedCharacters={props.bookmarkedCharacters}
                         bookmarkCharacter={props.bookmarkCharacter} />
                 );
