@@ -7,11 +7,7 @@ const SingleCharacter = (props) => {
   let bookmarkedCharacters;
   let bookmarked = false;
 
-  if (props.bookmarkedCharacters) {
-    bookmarkedCharacters = props.bookmarkedCharacters;
-  } else {
-    bookmarkedCharacters = [];
-  }
+  props.bookmarkedCharacters ? bookmarkedCharacters = props.bookmarkedCharacters : bookmarkedCharacters = [];
 
   for (let i = 0; i < bookmarkedCharacters.length; i++) {
     if (bookmarkedCharacters[i]._id === _id) {

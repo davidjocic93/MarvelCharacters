@@ -12,7 +12,7 @@ class DataService {
             (serverResponse) => {
 
 
-                serverResponse.data.data.results.map(char => {
+                serverResponse.data.data.results.forEach(char => {
                     const name = char.name;
                     const id = char.id;
                     const imageUrl = char.thumbnail.path + "/landscape_xlarge." + char.thumbnail.extension;

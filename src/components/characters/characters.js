@@ -3,6 +3,7 @@ import SingleCharacter from '../singleCharacter/singleCharacter';
 import "./characters.css";
 
 const Characters = (props) => {
+    
     return (
         <div className="characters-wrapper">
             {props.characters.map(character => {

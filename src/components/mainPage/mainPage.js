@@ -21,7 +21,6 @@ class MainPage extends React.Component {
     }
 
     handleChange = (event) => {
-
         const searchTerm = event.target.value.toLowerCase();
         clearTimeout(this.timer);
         this.setState({ searchTerm });
@@ -47,36 +46,24 @@ class MainPage extends React.Component {
         this.searchCharacters(searchTerm);
     }
 
-    searchCharacters = (searchTerm) => {
+    searchCharacters = (searchTerm, page) => {
 
-        dataService.getCharacters(searchTerm, 1, (characters, total, pages) => {
-
-            this.setState({
-                characters,
-                searchTerm,
-                searching: true,
-                total,
-                pages,
-                page: 1
+        dataService.getCharacters(searchTerm, page,
+            (characters, total, pages) => {
+                this.setState({
+                    characters,
+                    searchTerm,
+                    searching: true,
+                    total,
+                    pages,
+                    page
+                });
             });
-        });
     }
 
     handlePageChange = (page) => {
-
         const searchTerm = this.state.searchTerm;
-
-        dataService.getCharacters(searchTerm, page, (characters, total, pages) => {
-
-            this.setState({
-                characters,
-                searchTerm,
-                searching: true,
-                total,
-                pages,
-                page
-            });
-        });
+        this.searchCharacters(searchTerm, page);
     }
 
     isCharacterBookmarked = (characters, character) => {
@@ -94,15 +81,11 @@ class MainPage extends React.Component {
         let bookmarkedCharacters = this.state.bookmarkedCharacters;
         let alreadyBookmarked = this.isCharacterBookmarked(bookmarkedCharacters, character);
 
-        if (alreadyBookmarked >= 0) {
-            bookmarkedCharacters.splice(alreadyBookmarked, 1);
-        } else {
-            bookmarkedCharacters.push(character);
-        }
+        alreadyBookmarked >= 0 ? bookmarkedCharacters.splice(alreadyBookmarked, 1) : bookmarkedCharacters.push(character);
 
         let bookmarkedCharactersStringified = JSON.stringify(bookmarkedCharacters);
-
         localStorage.setItem("MARVEL_CHARACTERS", bookmarkedCharactersStringified);
+
         this.setState({
             bookmarkedCharacters,
         });
